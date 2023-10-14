@@ -36,4 +36,13 @@ body {
 
 .busqueda button {
     padding: 1rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: #2ec4b6;
+    transition: all ease 0.5s;
+}
+
+.busqueda button:hover {
+    transition: all ease 0.5s;
+    box-shadow: 0 0 10px #495057;
 }

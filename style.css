@@ -46,3 +46,20 @@ body {
     transition: all ease 0.5s;
     box-shadow: 0 0 10px #495057;
 }
+
+
+main {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.img-content img {
+    height: 300px;
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+}

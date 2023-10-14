@@ -1,4 +1,5 @@
 const library = document.getElementById('list');
+const content = document.getElementById('main');
 
 async function readPokemon() {
     for (let i = 1; i <= 20; i++) {
@@ -45,16 +46,19 @@ const readNeko = async () => {
 }
 
 /* readNeko(); */
+let dataFound = document.createElement('article');
 
 const btnConsulta = document.getElementById('observar');
-btnConsulta.addEventListener('click', async function () {
+btnConsulta.addEventListener('click', async function (e) {
+    e.preventDefault();
     try {
+        dataFound.remove();
+
         const inputValue = document.getElementById('unifed').value;
         const pokemonRequest = `https://pokeapi.co/api/v2/pokemon/${inputValue}`;
         const response = await fetch(pokemonRequest);
         const data = await response.json();
-
-        const dataFound = document.createElement('article');
+        library.style.display = 'none';
 
         dataFound.innerHTML = `
             <div class="img-content">
@@ -63,9 +67,9 @@ btnConsulta.addEventListener('click', async function () {
             <h2>${data.name}</h2>
             `;
 
-        library.appendChild(dataFound);
+        content.appendChild(dataFound);
 
     } catch (error) {
-        library.innerHTML = `<h2>No se pudo encontrar: ${error}.</h2>`;
+        content.innerHTML = `<h2>No se pudo encontrar: ${error}.</h2>`;
     }
 });

@@ -10,14 +10,13 @@ async function readPokemon() {
 }
 
 const articleBlog = (pokemon) => {
-    const listado = document.createElement('div');
+    const listado = document.createElement('article');
+
     listado.innerHTML = `
-    <article>
         <div class="img-content">
             <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="">            
         </div>
         <h2>${pokemon.name}</h2>
-    </article>
 `;
     library.appendChild(listado);
 }
@@ -33,11 +32,11 @@ const readNeko = async () => {
     print.forEach((p) => {
         const render = document.createRange().createContextualFragment(
             `
-            <article class="content">
+            <article>
              <div class="img-content">
                 <img src="${p.url}" alt="${p.artist_name}">
-                <h2>${p.artist_name}</h2>
-             </div>   
+             </div>
+             <h2>${p.artist_name}</h2>
             </article>
             `
         );
@@ -47,9 +46,26 @@ const readNeko = async () => {
 
 /* readNeko(); */
 
-/* const selectNumber = document.querySelector('input');
+const btnConsulta = document.getElementById('observar');
+btnConsulta.addEventListener('click', async function () {
+    try {
+        const inputValue = document.getElementById('unifed').value;
+        const pokemonRequest = `https://pokeapi.co/api/v2/pokemon/${inputValue}`;
+        const response = await fetch(pokemonRequest);
+        const data = await response.json();
 
-let valueNumber = selectNumber.value;
+        const dataFound = document.createElement('article');
 
-const btnConsulta = document.querySelector('button');
-btnConsulta.addEventListener('click',) */
+        dataFound.innerHTML = `
+            <div class="img-content">
+                <img src="${data.sprites.other['official-artwork'].front_default}" alt="">            
+            </div>
+            <h2>${data.name}</h2>
+            `;
+
+        library.appendChild(dataFound);
+
+    } catch (error) {
+        library.innerHTML = `<h2>No se pudo encontrar: ${error}.</h2>`;
+    }
+});

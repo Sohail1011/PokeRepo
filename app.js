@@ -14,7 +14,7 @@ const articleBlog = (pokemon) => {
 
     listado.innerHTML = `
         <div class="img-content">
-            <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="">            
+            <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name}">            
         </div>
         <h2>${pokemon.name}</h2>
 `;
@@ -58,7 +58,7 @@ btnConsulta.addEventListener('click', async function () {
 
         dataFound.innerHTML = `
             <div class="img-content">
-                <img src="${data.sprites.other['official-artwork'].front_default}" alt="">            
+                <img src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name}">            
             </div>
             <h2>${data.name}</h2>
             `;

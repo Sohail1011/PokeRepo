@@ -1,21 +1,28 @@
-async function readPokemon() {
-    const library = document.getElementById('list');
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon");
-    const data = await res.json();
-    const results = data.results;
+const library = document.getElementById('list');
 
-    results.forEach((r) => {
-        const listado = document.createRange().createContextualFragment(/*html*/`
-        <article>
-            <div class="img-content">
-                <img src="${r.url}" alt="${r.name}">
-                <h2>${r.name}</h2>
-            </div>
-        </article>
-        `);
-        library.appendChild(listado);
-    });
+async function readPokemon() {
+    for (let i = 1; i <= 20; i++) {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+        const data = await res.json();
+        articleBlog(data);
+    }
+    /* const results = data.results; */
 }
+
+const articleBlog = (pokemon) => {
+    const listado = document.createElement('div');
+    listado.innerHTML = `
+    <article>
+        <div class="img-content">
+            <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="">            
+        </div>
+        <h2>${pokemon.name}</h2>
+    </article>
+`;
+    library.appendChild(listado);
+}
+
+readPokemon();
 
 const readNeko = async () => {
     const gallery = document.getElementById('list');
@@ -38,4 +45,11 @@ const readNeko = async () => {
     });
 }
 
-readNeko();
+/* readNeko(); */
+
+/* const selectNumber = document.querySelector('input');
+
+let valueNumber = selectNumber.value;
+
+const btnConsulta = document.querySelector('button');
+btnConsulta.addEventListener('click',) */

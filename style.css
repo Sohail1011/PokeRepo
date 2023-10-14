@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gabarito', sans-serif;
+}
+
+.navprin {
+    min-height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    background-color: #cbf3f0;
+}
+
+.busqueda {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.busqueda input {
+    padding: 1rem;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 1rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+}
+
+.busqueda button {
+    padding: 1rem 2rem;
+}
